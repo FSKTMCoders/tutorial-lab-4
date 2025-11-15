@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class L4Q2{
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        
+        
+        System.out.print("Enter an integer: ");
+        int n = scanner.nextInt();
+        
+        int totalSum = 0;
+        
+        for (int i = 1; i <= n; i++){
+            int currentItem = 0;
+            for (int j = 1; j <= i; j++){
+                currentItem += j;
+            }
+            totalSum += currentItem;
+        }
+        System.out.println("The sum is: " + totalSum);
+        
+        scanner.close();
+    }
+
+}

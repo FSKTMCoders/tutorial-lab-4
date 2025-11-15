@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class L4Q3 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int sum = 0;
+        int sumOfSquares = 0;
+        int count = 0;
+        int minScore = Integer.MAX_VALUE;
+        int maxScore = Integer.MIN_VALUE;
+
+        while (true) {
+            System.out.print("Enter a score [negative score to quit]: ");
+            int score = scanner.nextInt();
+
+            if (score < 0) {
+                break;
+            }
+
+            sum += score;
+            sumOfSquares += score * score;
+            count++;
+
+            if (score < minScore) {
+                minScore = score;
+            }
+            if (score > maxScore) {
+                maxScore = score;
+            }
+        }
+
+        if (count == 0) {
+            System.out.println("No valid scores entered.");
+            scanner.close();
+            return;
+        }
+
+        double average = (double) sum / count;
+        double varianceNumerator = sumOfSquares - (double) (sum * sum) / count;
+        double standardDeviation = Math.sqrt(varianceNumerator / (count - 1));
+
+        System.out.println("Minimum Score: " + minScore);
+        System.out.println("Maximum Score: " + maxScore);
+        System.out.printf("Average Score: %.2f\n", average);
+        System.out.printf("Standard Deviation: %.2f\n", standardDeviation);
+
+        scanner.close();
+    }
